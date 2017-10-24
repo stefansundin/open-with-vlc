@@ -30,12 +30,12 @@ chrome.commands.onCommand.addListener(listener);
 
 chrome.contextMenus.onClicked.addListener(function(info, tab) {
   if (info.menuItemId == "open-vlc") {
-    open(info.linkUrl, tab.id);
+    open(info.linkUrl || info.frameUrl, tab.id);
   }
 })
 
 chrome.contextMenus.create({
   id: "open-vlc",
   title: "Open with VLC",
-  contexts: ["link"],
+  contexts: ["link", "frame"],
 });
