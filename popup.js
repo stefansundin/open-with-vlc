@@ -1,19 +1,12 @@
-document.addEventListener("DOMContentLoaded", function() {
-  document.querySelector("#extension_version").textContent = `v${chrome.runtime.getManifest().version}`;
+chrome.storage.sync.get(default_options, function(items) {
+  if (items.open_immediately) {
+    chrome.runtime.sendMessage("open-vlc");
+    window.close();
+  }
+});
 
+document.addEventListener("DOMContentLoaded", function() {
   document.querySelector("#open").addEventListener("click", function() {
     chrome.runtime.sendMessage("open-vlc");
-  });
-
-  var shortcut = document.querySelector("#shortcut");
-  shortcut.addEventListener("click", function() {
-    chrome.tabs.create({url: "chrome://extensions/configureCommands"});
-  });
-  chrome.commands.getAll(function(commands) {
-    commands.forEach(function(command) {
-      if (command.name == "open-vlc") {
-        shortcut.textContent = command.shortcut || "not set";
-      }
-    });
   });
 });

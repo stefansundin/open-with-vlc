@@ -1,0 +1,8 @@
+body {
+  width: 700px;
+  min-height: 215px;
+}
+
+#extension_version {
+  float: right;
+}
