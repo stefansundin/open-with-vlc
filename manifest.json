@@ -1,6 +1,6 @@
 {
   "name": "Open with VLC",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Open websites with VLC. You must install the vlc:// protocol as well. You should use this together with playlist parsers.",
   "homepage_url": "https://addons.videolan.org/p/1167220/",
   "author": "Stefan Sundin",
@@ -14,6 +14,7 @@
   },
   "browser_action": {
     "default_icon": {
+      "16": "icon.png",
       "19": "icon.png",
       "38": "icon.png"
     },
@@ -27,7 +28,8 @@
     }
   },
   "permissions": [
-    "tabs"
+    "tabs",
+    "contextMenus"
   ],
   "manifest_version": 2
 }
