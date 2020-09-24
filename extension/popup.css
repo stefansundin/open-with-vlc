@@ -16,4 +16,6 @@ h2 {
 button {
   width: 100%;
   height: 30px;
+  font-size: large;
+  font-weight: bold;
 }

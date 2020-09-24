@@ -1,15 +1,23 @@
+const default_options = {
+  open_tab_in_background: false,
+};
+
 function open(url, tabId) {
   console.log(`vlc://${url}`);
 
   // Open a new tab to start the prompt
-  chrome.tabs.create({url: `vlc://${url}`}, function(newtab) {
-    // Focus the old tab
-    chrome.tabs.update(tabId, {active: true});
-    // You have 10 seconds to click the button
-    // If the tab is closed too soon, the button no longer works :(
-    setTimeout(function() {
-      chrome.tabs.remove([newtab.id]);
-    }, 10000);
+  chrome.storage.sync.get(default_options, function(options) {
+    chrome.tabs.create({url: `vlc://${url}`}, function(newtab) {
+      // Focus the old tab
+      if (options.open_tab_in_background) {
+        chrome.tabs.update(tabId, {active: true});
+      }
+      // You have 10 seconds to click the button
+      // If the tab is closed too soon, the button no longer works :(
+      setTimeout(function() {
+        chrome.tabs.remove([newtab.id]);
+      }, 10000);
+    });
   });
 }
 
