@@ -7,7 +7,7 @@ function open(url, tabId) {
     chrome.tabs.update(tabId, {active: true});
     // You have 10 seconds to click the button
     // If the tab is closed too soon, the button no longer works :(
-    setTimeout(function(){
+    setTimeout(function() {
       chrome.tabs.remove([newtab.id]);
     }, 10000);
   });
@@ -17,9 +17,9 @@ function listener(message) {
   if (message == "open-vlc") {
     chrome.tabs.query({
       active: true,
-      lastFocusedWindow: true
+      lastFocusedWindow: true,
     }, function(tabs) {
-      var tab = tabs[0];
+      const tab = tabs[0];
       open(tab.url, tab.id);
     });
   }
