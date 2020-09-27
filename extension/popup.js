@@ -1,3 +1,22 @@
+function openVLC() {
+  chrome.storage.sync.get(default_options, function(options) {
+    if (options.pause_media) {
+      chrome.tabs.executeScript({
+        code: `(function(){
+          const videos = document.querySelectorAll("audio,video");
+          for (let media of videos) {
+            if (!media.paused) {
+              media.pause();
+            }
+          }
+        })()`
+      });
+    }
+  });
+  chrome.runtime.sendMessage("open-vlc");
+  window.close();
+}
+
 chrome.tabs.query({
   active: true,
   lastFocusedWindow: true,
@@ -9,15 +28,15 @@ chrome.tabs.query({
 
   chrome.storage.sync.get(default_options, function(options) {
     if (options.open_immediately) {
-      chrome.runtime.sendMessage("open-vlc");
-      window.close();
+      openVLC();
     }
   });
 });
 
 document.addEventListener("DOMContentLoaded", function() {
-  document.querySelector("#open").addEventListener("click", function() {
-    chrome.runtime.sendMessage("open-vlc");
-    window.close();
+  const open_btn = document.querySelector("#open");
+  open_btn.addEventListener("click", function() {
+    openVLC();
   });
+  open_btn.focus();
 });

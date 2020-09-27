@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Open with VLC",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Open websites with VLC. You must install the vlc:// protocol handler as well. You should use this together with playlist parsers.",
   "homepage_url": "https://github.com/stefansundin/open-with-vlc",
   "author": "Stefan Sundin",
@@ -33,6 +33,7 @@
     }
   },
   "permissions": [
+    "activeTab",
     "tabs",
     "contextMenus",
     "storage"
