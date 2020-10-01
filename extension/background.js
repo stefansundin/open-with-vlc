@@ -38,7 +38,9 @@ chrome.commands.onCommand.addListener(listener);
 
 chrome.contextMenus.onClicked.addListener(function(info, tab) {
   if (info.menuItemId == "open-vlc") {
-    const url = [info.linkUrl, info.frameUrl, info.srcUrl, info.pageUrl].find(url => url?.startsWith("http"));
+    const url = [info.linkUrl, info.frameUrl, info.srcUrl, info.pageUrl].find(function(url) {
+      return (url && url.startsWith("http"));
+    });
     console.log(url);
     if (url) {
       open(url, tab.id);
