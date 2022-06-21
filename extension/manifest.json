@@ -1,7 +1,7 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Open with VLC",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "Open websites with VLC. You must install the vlc:// protocol handler as well. You should use this together with playlist parsers.",
   "homepage_url": "https://github.com/stefansundin/open-with-vlc",
   "author": "Stefan Sundin",
@@ -11,13 +11,12 @@
     "128": "icon.png"
   },
   "background": {
-    "scripts": [ "background.js" ]
+    "service_worker": "sw.js"
   },
   "options_ui": {
-    "page": "options.html",
-    "chrome_style": true
+    "page": "options.html"
   },
-  "browser_action": {
+  "action": {
     "default_icon": {
       "16": "icon.png",
       "19": "icon.png",
@@ -35,7 +34,9 @@
   "permissions": [
     "activeTab",
     "tabs",
+    "scripting",
     "contextMenus",
     "storage"
-  ]
+  ],
+  "minimum_chrome_version": "96"
 }
