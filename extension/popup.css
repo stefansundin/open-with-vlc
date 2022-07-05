@@ -19,3 +19,9 @@ button {
   font-size: large;
   font-weight: bold;
 }
+
+input[type=checkbox] {
+  vertical-align: middle;
+  position: relative;
+  bottom: .08em;
+}
