@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Open with VLC",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "Open websites with VLC. This extension is not affiliated or endorsed by the VLC team or the VideoLAN organization.",
   "homepage_url": "https://github.com/stefansundin/open-with-vlc",
   "author": "Stefan Sundin",
